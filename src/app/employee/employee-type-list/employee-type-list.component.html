@@ -1,0 +1,40 @@
+<div id="title-content">
+  <h2> Type Employee List</h2><br>
+  <td>
+    <button (click)="home()" class="btn btn-primary">Back Home</button>
+    <button  (click)="createEmployeeType()" class="btn btn-success" style="margin-left: 0px;">Add Employee Type</button>
+  </td>
+</div>
+<br/>
+<div class="col-md-6">
+  <div class="content-employe-type">
+  <table class="table table-striped">
+    <thead>
+    <tr bgcolor="#87cefa">
+      <th class="hidden">Id</th>
+      <th>#Nro</th>
+      <th>Name Type Employee</th>
+      <th>Description</th>
+      <th><div align="center">Action</div></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let employeeType of employeeTypes$ | async; let index=index">
+      <td class="hidden">{{employeeType.typeId}}</td>
+      <td align="center">{{index + 1}}</td>
+      <td>{{employeeType.typeName}}</td>
+      <td>{{employeeType.description}}</td>
+      <td>
+        <button class="btn btn-info" (click)="updateEmployeeType(employeeType)" style="margin-left: 20px;"> Edit</button>
+        <button class="btn btn-danger" (click)="deleteEmployeeType(employeeType.typeId)" > Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  </div>
+  <div id="image-employee-type">
+    <div id="content-image-material-type">
+      <img src="/assets/images/mat-seguridad.jpg" alt="Logo" width="300" height="300" img= "img-responsive">
+    </div>
+  </div>
+</div>

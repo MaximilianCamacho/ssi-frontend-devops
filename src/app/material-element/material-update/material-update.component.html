@@ -1,0 +1,48 @@
+<div class="container jumbotron"
+fxLayout="row"
+fxLayout.sm="column"
+fxLayout.xs="column"
+fxLayoutAlign.xs="start center"
+fxLayoutAlign.sm="start center"
+fxLayoutAlign.gt-sm="center center"
+fxLayoutGap="10px">
+<div fxFlex fxFlex.gt-sm="70%">
+    <h3>SSI-GA Form Equipment update</h3>
+    <form [formGroup]="editMaterial">
+        <mat-input-container floatPlaceholder="auto">
+            <input matInput formControlName="name"
+                   type="text"
+                   required
+                   placeholder="new name of material">
+                   <mat-hint>is required</mat-hint>
+        </mat-input-container>
+        <mat-input-container floatPlaceholder="auto">
+            <input matInput formControlName="description"
+                   type="text"
+                   placeholder="new description">
+        </mat-input-container><br>
+        <mat-input-container floatPlaceholder="auto">
+            <input matInput formControlName="productiveLife"
+                   type="text"
+                   placeholder="new productive Life">
+                   <mat-hint>in years</mat-hint>
+        </mat-input-container>
+        <mat-form-field>
+            <mat-select formControlName="EquipmentToAssign" placeholder="new equipment type">
+                <mat-option>seguridad</mat-option>
+                <mat-option>adicional</mat-option>
+            </mat-select>
+            <mat-hint>
+                <span>select Material type</span>
+            </mat-hint>
+        </mat-form-field>
+        </form> 
+        
+    <button mat-button (click)="onClick" type="button" class="btn btn-success">Update</button>
+
+</div>
+<div fxFlex fxFlex.gt-sm="20%">
+<img src="/assets/images/mat-seguridad.jpg" alt="icon" width="300" height="300">
+</div>
+<div fxFlex></div>
+</div>

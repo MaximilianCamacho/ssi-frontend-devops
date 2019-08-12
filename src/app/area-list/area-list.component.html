@@ -1,0 +1,56 @@
+
+<div class="container">
+
+  <div class="container jumbotron"
+       fxLayout="row"
+       fxLayout.sm="column"
+       fxLayout.xs="column"
+       fxLayoutAlign.xs="start center"
+       fxLayoutAlign.sm="start center"
+       fxLayoutAlign.gt-sm="center center"
+       fxLayoutGap="10px">
+    <div fxFlex fxFlex.gt-sm="70%">
+
+
+      <h3>SSI-GA New AREA registration</h3>
+      <form class="form-horizontal">
+
+        <div  *ngIf="!isValid" class="alert alert-danger">
+          <strong>Error!</strong> Falta Lllenar algunoscambio
+        </div>
+
+        <div class="form-group">
+          <label for="area">Area:</label>
+          <input type="email" class="form-control" id="area" [(ngModel)]="areas.name"  placeholder="Enter new Area" name="area">
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <input type="description" class="form-control" id="description" [(ngModel)]="areas.description"  placeholder="Description" name="description">
+        </div>
+
+        <div class="form-group">
+          <label for="codigo">Codigo:</label>
+          <input type="codigo" class="form-control" id="codigo" [(ngModel)]="areas.codigo"  placeholder="Codigo" name="codigo">
+        </div>
+
+
+        <div class="form-group">
+          <button type="submit"  (click)="saveOrUpdate()"  class="btn btn-default">Submitxx</button>
+        </div>
+
+      </form>
+
+
+    </div>
+    <div fxFlex fxFlex.gt-sm="20%">
+      <img src="/assets/images/mat-seguridad.jpg" alt="icon" width="300" height="300">
+    </div>
+    <div fxFlex></div>
+  </div>
+  <br>
+
+
+</div>
+
+

@@ -1,0 +1,150 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h3 class="modal-title pull-left">
+      <span class="text-warning icon-interface-1"></span>
+      <span>Create Incident</span>
+    </h3>
+    <button type="button" class="close close_modal" aria-label="Close" (click)="closeIncident()">
+      <img src="/assets/images/close.jpg">
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form class="form-horizontal" [formGroup]="createIncidentForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="employeeId">Select Employee:<b style="color:red;">*</b></label>
+        <div class="col-sm-9">
+          <select id="employeeId" class="form-control" (change)="fillInformation()" formControlName="employeeId" mane="employeeId" required>
+            <option [ngValue]="null" disabled>---Select Employee---</option>
+            <option *ngFor="let employee of employees$ | async" [ngValue]="employee.id">{{employee.firstName}} {{employee.lastName}} {{employee.ci}}</option>
+          </select>
+          <div *ngIf="createIncidentForm.controls['employeeId'].value == null && !createIncidentForm.controls['employeeId'].untouched">
+          <div *ngIf="createIncidentForm.controls['employeeId'].errors && !createIncidentForm.controls['employeeId'].pristine">
+            <div class="alert alert-danger" [hidden]="!createIncidentForm.controls['employeeId'].errors.required">Employee is required.</div>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="employeeFirstNameId">Employee First Name:</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="employeeFirstNameId" placeholder="employee first name"
+                 name="employeeFirstName" disabled="disabled" value="{{employee.firstName}}">
+        </div>
+        <label class="control-label col-sm-2" for="employeeLastNameId">Employee Last Name:</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="employeeLastNameId" placeholder="employee last name"
+                 name="employeeLastName" disabled="disabled" value="{{employee.lastName}}">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="employeeCiId">Employee CI:</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="employeeCiId" placeholder="employee ci" name="employeeCi"
+                 disabled="disabled" value="{{employee.ci}}">
+        </div>
+        <label class="control-label col-sm-2" for="employeeGenderId">Employee Gender:</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="employeeGenderId" placeholder="employee gender"
+                 name="employeeGender" disabled="disabled" value="{{employee.gender}}">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="accidentDateId" >Accident Date:<b style="color:red;">*</b></label>
+        <div class="col-sm-2">
+          <input type="date" class="form-control" id="accidentDateId" name="accidentDate" formControlName="accidentDate" required>
+          <div *ngIf="createIncidentForm.controls['accidentDate'].errors && !createIncidentForm.controls['accidentDate'].pristine">
+            <div class="alert alert-danger" [hidden]="!createIncidentForm.controls['accidentDate'].errors.required">Incident date is required.</div>
+          </div>
+        </div>
+
+        <label class="control-label col-sm-2" for="accidentHrId">Accident Hr:<b style="color:red;">*</b></label>
+        <div class="col-sm-2">
+          <input type="time" class="form-control" name="hora" min="18:00" max="21:00" step="3600" id="accidentHrId" formControlName="accidentTime" required>
+          <div *ngIf="createIncidentForm.controls['accidentTime'].errors && !createIncidentForm.controls['accidentTime'].pristine">
+            <div class="alert alert-danger" [hidden]="!createIncidentForm.controls['accidentTime'].errors.required">Incident time is required.</div>
+          </div>
+        </div>
+
+        <label class="control-label col-sm-2" for="accidentDayId">Accident Day:<b style="color:red;">*</b></label>
+        <div class="col-sm-2">
+          <select id="accidentDayId" class="form-control" formControlName="accidentDay" required>
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+            <option>Saturday</option>
+            <option>Sunday</option>
+          </select>
+          <div *ngIf="createIncidentForm.controls['accidentDay'].errors && !createIncidentForm.controls['accidentDay'].pristine">
+            <div class="alert alert-danger" [hidden]="!createIncidentForm.controls['accidentDay'].errors.required">Incident day is required.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="incidentName">Incident Type:<b style="color:red;">*</b></label>
+        <div class="col-sm-4">
+          <select id="incidentName" class="form-control" formControlName="incidentTypeId" required>
+            <option *ngFor="let incidentType of incidentTypes$ | async" [ngValue]="incidentType.id">{{incidentType.name}}</option>
+          </select>
+          <div *ngIf="createIncidentForm.controls['incidentTypeId'].errors && !createIncidentForm.controls['incidentTypeId'].pristine">
+            <div class="alert alert-danger" [hidden]="!createIncidentForm.controls['incidentTypeId'].errors.required">Incident type is required.</div>
+          </div>
+        </div>
+        <label class="control-label col-sm-2" for="incidentAgent">Incident Agent:<b style="color:red;">*</b></label>
+        <div class="col-sm-4">
+          <select id="incidentAgent" class="form-control" formControlName="accidentAgentId" required>
+            <option *ngFor="let incidentAgent of incidentAgents$ | async" [ngValue]="incidentAgent.id">{{incidentAgent.name}}</option>
+          </select>
+          <div *ngIf="createIncidentForm.controls['accidentAgentId'].errors && !createIncidentForm.controls['accidentAgentId'].pristine">
+            <div class="alert alert-danger" [hidden]="!createIncidentForm.controls['accidentAgentId'].errors.required">Incident agent is required.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="affectedPartsId">Affected Parts:<b style="color:red;">*</b></label>
+        <div class="col-sm-4">
+          <textarea type="text" rows="4" class="form-control" id="affectedPartsId" placeholder="affected parts"
+                    name="affectedParts" formControlName="affectedPart" minlength="3" maxlength="50" pattern="[A-Z ][ a-zA-Z0-9]*" required>
+          </textarea>
+          <div *ngIf="createIncidentForm.controls['affectedPart'].errors && !createIncidentForm.controls['affectedPart'].pristine">
+            <div class="alert alert-danger" [hidden]="!createIncidentForm.controls['affectedPart'].errors.required">affected part is required.</div>
+            <div class="alert alert-danger" [hidden]="!createIncidentForm.controls['affectedPart'].errors.minlength">Elformato es al menos de {{createIncidentForm.controls['affectedPart'].errors.minlength.requiredLength}} caracters.</div>
+            <div class="alert alert-danger" [hidden]="!createIncidentForm.controls['affectedPart'].errors.pattern">Debe empesar con mayuscula.</div>
+          </div>
+        </div>
+        <label class="control-label col-sm-2" for="accidentSiteId">Accident Site:<b style="color:red;">*</b></label>
+        <div class="col-sm-4">
+          <textarea type="text" rows="4" class="form-control" id="accidentSiteId" placeholder="accident site"
+                    name="accidentSite" formControlName="accidentSite" minlength="3" maxlength="50" pattern="[A-Z ][ a-zA-Z0-9]*" required>
+          </textarea>
+          <div *ngIf="createIncidentForm.controls['accidentSite'].errors && !createIncidentForm.controls['accidentSite'].pristine">
+            <div class="alert alert-danger" [hidden]="!createIncidentForm.controls['accidentSite'].errors.required">Accident site is required.</div>
+            <div class="alert alert-danger" [hidden]="!createIncidentForm.controls['accidentSite'].errors.minlength">El formato es al menos de {{createIncidentForm.controls['accidentSite'].errors.minlength.requiredLength}} caracteres.</div>
+            <div class="alert alert-danger" [hidden]="!createIncidentForm.controls['accidentSite'].errors.pattern">Debe empesar con mayuscula.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <!--<div style="padding: 0px 0px 0px 20px;color: #bc0000;"><marquee BEHAVIOR="alternate" width="50%" SCROLLDELAY=500>Para registrar incidencias debe llenar todos los espacios.</marquee></div>-->
+        <div style="padding: 0px 0px 0px 25px;" [hidden]="createIncidentForm.valid"><span class=""><strong><i>Para registrar incidencias debe llenar todos los espacios con </i> <b class="parpadea text">_(*)</b></strong></span></div>
+        <div style="padding: 0px 0px 0px 25px;" [hidden]="!createIncidentForm.valid"><span class=""><strong><i>Para registrar incidencias debe llenar todos los espacios con </i> <b class="parpadea-ok text-ok">_(ok)</b></strong></span></div>
+        <div class="col-sm-offset-9 col-sm-10">
+          <button type="submit" class="btn btn-primary" [disabled]="!createIncidentForm.valid" >Create</button>
+          <button type="button" class="btn btn-danger " data-toggle="tooltip" data-placement="top"
+                  (click)="closeIncident()">Cancel
+          </button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

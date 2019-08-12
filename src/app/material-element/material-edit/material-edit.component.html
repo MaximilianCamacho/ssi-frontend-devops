@@ -1,0 +1,75 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h3 class="modal-title pull-left">
+      <span class="text-warning icon-interface-1"></span>
+      <span>Create Material</span>
+    </h3>
+    <button type="button" class="close close_modal" aria-label="Close" (click)="closeMaterial()">
+      <img src="/assets/images/close.jpg">
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="form-horizontal" #myForm="ngForm" name="myForm">
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="materialName">Material:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" [(ngModel)] ="material.name" #textMaterial="ngModel" id="materialName" placeholder="Enter Material" name="name"
+                 minlength="3" maxlength="30" pattern="[A-Z ][ a-zA-Z0-9.-_]*" required />
+          <div *ngIf="textMaterial.touched && !textMaterial.valid">
+            <div *ngIf="textMaterial.errors.required" id="message_error">Material es requerido</div>
+            <div *ngIf="textMaterial.errors.minlength" id="message_error">El formato es al menos {{textMaterial.errors.minlength.requiredLength}} caracterers. </div>
+            <div *ngIf="textMaterial.errors.pattern" id="message_error">Debe empezar en mayúscula. </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="vidaUtil">Productive Life:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" [(ngModel)] =" material.vidaUtil" #textProdLife="ngModel" id="vidaUtil" placeholder="Enter Type Material" name="vidaUtil"
+                 minlength="1" maxlength="3" pattern="[0-9]*" required />
+          <div *ngIf="textProdLife.touched && !textProdLife.valid">
+            <div *ngIf="textProdLife.errors.required" id="message_error">Productive Life es requerido.</div>
+            <div *ngIf="textProdLife.errors.minlength" id="message_error">El formato es al menos de {{textProdLife.errors.minlength.requiredLength}} dígitos. </div>
+            <div *ngIf="textProdLife.errors.pattern" id="message_error">Vida util de material de seguridad debe ser numeros enteros postivos. </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="description">Description:</label>
+        <div class="col-sm-9">
+          <!--<input type="text" class="form-control" [(ngModel)] =" material.description" id="description" placeholder="Enter description Material" name="matDescription">-->
+          <textarea type="text" rows="4" class="form-control" id="description" placeholder="Enter incident type"
+                    name="description" [(ngModel)] ="material.description" #textDescription="ngModel" minlength="3" maxlength="50" pattern="[A-Z ][ a-zA-Z0-9.-_,/]*" >
+          </textarea>
+          <div *ngIf="textDescription.touched && !textDescription.valid">
+            <!--<div *ngIf="textDescription.errors.required" id="message_error">Material es requerido</div>-->
+            <div *ngIf="textDescription.errors.minlength" id="message_error">El formato es al menos {{textDescription.errors.minlength.requiredLength}} caracterers. </div>
+            <div *ngIf="textDescription.errors.pattern" id="message_error">Debe empezar en mayúscula. </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="materialType">Equipment type:</label>
+        <div class="col-sm-4">
+        &nbsp;&nbsp;&nbsp;&nbsp;<select id="materialType" [(ngModel)]="material.materialTypeId" #matType="ngModel" name="materialTypeId" placeholder="Equipment type" required>
+        <!--<option value="0" style="padding: 5px;" selected="selected" disabled="disabled">{{material.materialType.nameType}}</option>-->
+        <option style="padding: 5px; width: 200px;" *ngFor="let materialType of materialType$" [value]="materialType.id">{{materialType.nameType}}</option>
+      </select>
+        <div *ngIf="matType.touched && !matType.valid">
+          <div *ngIf="matType.errors.required" id="message_error">Equipment type es requerido.</div>
+        </div>
+        <!--<label>{{material.matType}}</label>-->
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" (click)="updateMaterial()" class="btn btn-primary" name="btnCreate" [disabled]="!myForm.valid">Update</button>
+          <button type="button" class="btn btn-danger " data-toggle="tooltip" data-placement="top" name="btnCancel"
+                  (click)="closeMaterial()">Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

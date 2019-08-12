@@ -1,0 +1,21 @@
+/*.container{
+  float: left;
+  /*width: 100%;
+  /*padding:0px;*/
+  /*margin-left: 0px;*/
+  /*border-style: solid double;
+
+}*/
+.col-md-7{
+  float: left;
+}
+.col-md-3{
+  float: left;
+}
+.pull-right{
+  float: left;
+}
+.col-md-10{
+  margin-top: 60px;
+  width: 97.5%;
+}

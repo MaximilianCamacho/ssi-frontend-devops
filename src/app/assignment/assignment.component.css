@@ -1,0 +1,154 @@
+.demo-md-panel {
+    min-height: 500px;
+  }
+
+  .demo-dialog-example {
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2),
+        0 13px 19px 2px rgba(0, 0, 0, 0.14),
+        0 5px 24px 4px rgba(0, 0, 0, 0.12);
+    width: 500px;
+  }
+
+  .demo-dialog-content {
+    padding: 0 15px;
+    width: 100%;
+  }
+
+  .demo-dialog-content img {
+    height: 300px;
+    margin: auto;
+  }
+
+  .demo-dialog-button {
+    width: 100%;
+  }
+
+  .demo-menu-example {
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2),
+        0 13px 19px 2px rgba(0, 0, 0, 0.14),
+        0 5px 24px 4px rgba(0, 0, 0, 0.12);
+    width: 256px;
+  }
+
+  .demo-menu-item {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    height: 48px;
+    padding: 0 16px;
+    position: relative;
+    transition: background 0.15s linear;
+    width: auto;
+  }
+
+  .demo-menu-item:hover,
+  .demo-menu-item:focus {
+    background-color: rgb(238, 238, 238);
+  }
+
+  .demo-menu-item.selected {
+    color: rgb(16, 108, 200);
+  }
+.container{
+  width: 97.5%;
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-bottom: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+  float: left;
+}
+.jumbotron{
+  padding: 30px 15px 30px 15px;
+}
+
+/*================================================================*/
+.text {
+  font-size:15px;
+  font-family:helvetica;
+  font-weight:bold;
+  /*color:#71d90b;*/
+  color: #bc0000;
+  /*text-transform:uppercase;*/
+}
+.parpadea {
+
+  animation-name: parpadeo;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  -webkit-animation-name:parpadeo;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@-moz-keyframes parpadeo{
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes parpadeo {
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+
+@keyframes parpadeo {
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+/*Para text OK*/
+.text-ok {
+  font-size:15px;
+  font-family:helvetica;
+  font-weight:bold;
+  color:#71d90b;
+  /*color: chartreuse;*/
+  /*text-transform:uppercase;*/
+}
+.parpadea-ok {
+
+  animation-name: parpadeo;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  -webkit-animation-name:parpadeo;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@-moz-keyframes parpadeo-ok{
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes parpadeo-ok {
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+
+@keyframes parpadeo-ok {
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+#message_error{
+  background-color: red;
+  border-radius:5px;
+  padding: 0px 5px 0px 5px;
+  color: white;
+  /*border: red solid;*/
+}

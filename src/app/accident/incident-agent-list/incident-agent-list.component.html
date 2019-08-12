@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="container jumbotron"
+       fxLayout="row"
+       fxLayout.sm="column"
+       fxLayout.xs="column"
+       fxLayoutAlign.xs="start center"
+       fxLayoutAlign.sm="start center"
+       fxLayoutAlign.gt-sm="center center"
+       fxLayoutGap="15px">
+    <div fxFlex fxFlex.gt-sm="70%">
+      <a class="divider"></a>
+      <span><img src="../../assets/images/logoSSI-GA.png" height=73 width=90></span>
+      <h3>SSI-GA Incident Agent list</h3>
+      <div class="btn-add-new-register">
+        <button (click)="home()" class="btn btn-primary">Back Home</button>
+        <button (click)="createIncidentAgent()" class="btn btn-success" style="margin-left: 0px;">Add Incident Agent</button>
+      </div>
+      <table id="equipments" class="table table-striped table-bordered">
+        <thead>
+        <tr>
+          <th>Nro</th>
+          <th>Name</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let incidentAgent of incidentAgent$ | async">
+          <td>{{incidentAgent.id}}</td>
+          <td>{{incidentAgent.name}}</td>
+          <td>
+            <button class="btn btn-success_nn" data-toggle="modal" id="updateMat" (click)="updateIncidentAgent(incidentAgent)" style="margin-left: 20px;"> <img src="../../assets/images/edit.png" height="20" width="20" class="editIcon"></button>
+            <button class="btn btn-danger_nn" (click)="deleteIncidentAgent(incidentAgent.id)"> <img src="../../assets/images/delete.png" height="20" width="20" class="editIcon"/></button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+    </div>
+    <div fxFlex fxFlex.gt-sm="30%">
+      <img src="/assets/images/mat-seguridad.jpg" alt="Logo" width="300" height="300" img= "img-responsive">
+    </div>
+    <div fxFlex></div>
+  </div>
+</div>

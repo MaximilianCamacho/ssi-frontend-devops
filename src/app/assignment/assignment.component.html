@@ -1,0 +1,68 @@
+<div class="container jumbotron"
+fxLayout="row"
+fxLayout.sm="column"
+fxLayout.xs="column"
+fxLayoutAlign.xs="start center"
+fxLayoutAlign.sm="start center"
+fxLayoutAlign.gt-sm="center center"
+fxLayoutGap="15px">
+<div fxFlex fxFlex.gt-sm="70%">
+    <br><br><br>
+    <span><img src="../../assets/images/logoSSI-GA.png" height=73 width=90></span>
+    <h3>SSI-GA Assignment</h3>
+    <form id="ngForm" #myForm="ngForm" novalidate>
+    <mat-form-field>
+        <mat-select [(ngModel)]="assignment.employeeId" #materialId="ngModel" placeholder="Employee" name="material" required onfocus="true">
+          <mat-option [value]="null" selected="selected">--Seleccione--</mat-option>
+          <mat-option *ngFor="let employee of employees" [value]="employee.id">{{employee.firstName}} {{employee.lastName}}</mat-option>
+        </mat-select>
+        <div *ngIf="materialId.touched && !materialId.valid">
+          <div *ngIf="materialId.errors.required" id="message_error">Employee es requerido</div>
+        </div>
+        <mat-hint>
+            <span>select employee</span>
+        </mat-hint>
+
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select [(ngModel)]="assignment.materialId" #employeeId="ngModel" placeholder="Equipment to Assign" name="employee" required>
+            <mat-option [value]="null" selected="selected">--Seleccione--</mat-option>
+            <mat-option *ngFor="let material of materials" [value]="material.id">{{material.name}}</mat-option>
+        </mat-select>
+        <div *ngIf="employeeId.touched && !employeeId.valid">
+          <div *ngIf="employeeId.errors.required" id="message_error">Equipment es requerido</div>
+        </div>
+        <mat-hint>
+            <span>select Material to assign</span>
+        </mat-hint>
+
+    </mat-form-field>
+    <mat-input-container floatPlaceholder="auto">
+        <input matInput
+               [(ngModel)]="assignment.quantity" #quantity="ngModel"
+               type="text"
+               required
+               name="quantity"
+               placeholder="quantity" minlength="1" maxlength="3" pattern="[1-9][0-9]+">
+               <mat-hint>is required</mat-hint>
+      <div *ngIf="quantity.touched && !quantity.valid">
+        <div *ngIf="quantity.errors.required" id="message_error">Quantity es requerido</div>
+        <div *ngIf="quantity.errors.minlength" id="message_error">El formato es al menos {{quantity.errors.minlength.requiredLength}} digitos. </div>
+        <div *ngIf="quantity.errors.pattern" id="message_error">Quantity debe ser numeros enteros positivos. </div>
+      </div>
+    </mat-input-container>
+    <br><br>
+      <div>
+        <button (click)="home()" class="btn btn-primary">Back Home</button>
+        <button type="button" class="btn btn-success" (click)="onSubmit()" [disabled]="!myForm.valid">Assign to employee</button>
+        <span class=""><strong><i>Para registrar incidencias debe llenar todos los espacios con </i> <b class="parpadea text">_(*)</b></strong></span>
+        <!--<span class="" [hidden]="!myForm.valid"><strong><i>Para registrar incidencias debe llenar todos los espacios con </i> <b class="parpadea-ok text-ok">_(ok)</b></strong></span>-->
+      </div>
+
+    </form>
+</div>
+<div fxFlex fxFlex.gt-sm="20%">
+<img src="/assets/images/safety-work-icon.jpg" alt="icon" width="300" height="300">
+</div>
+<div fxFlex></div>
+</div>

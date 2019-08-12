@@ -1,0 +1,20 @@
+#content-material-type{
+  width: 97.5%;
+  margin-top: 60px;
+  margin-left: 20px;
+  float: left;
+  background-color: #eee;
+}
+#material-type-list{
+  width: 55%;
+  float: left;
+  padding: 20px;
+}
+#image-material-type{
+  /*width: 20%;*/
+  float: left;
+}
+#content-image-material-type{
+  padding: 90px 20px 20px 100px;
+}
+

@@ -1,0 +1,35 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h3 class="modal-title pull-left">
+      <span class="text-warning icon-interface-1"></span>
+      <span>Create Material Type</span>
+    </h3>
+    <button type="button" class="close close_modal" aria-label="Close" (click)="closeMaterialType()">
+      <img src="/assets/images/close.jpg">
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="form-horizontal" #myForms="ngForm" name="myForm" novalidate>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="nameType">Material Type:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" [(ngModel)] =" materialType.nameType" #nombre="ngModel" id="nameType" name="nameType" placeholder="Enter Type Material"
+                 minlength="3" maxlength="40" required pattern="[A-Z ][ a-zA-Z0-9.-_]*">
+          <div *ngIf="nombre.touched && !nombre.valid">
+            <div *ngIf="nombre.errors.required" id="message_error">Material type es requerido</div>
+            <div *ngIf="nombre.errors.minlength" id="message_error">El formato es al menos {{nombre.errors.minlength.requiredLength}} caracterers. </div>
+            <div *ngIf="nombre.errors.pattern" id="message_error">Debe empezar en mayúscula. </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" (click)="onSubmit()" class="btn btn-primary" name="btnCreate" [disabled]="!myForms.valid">Create</button>
+          <button type="button" class="btn btn-danger " data-toggle="tooltip" data-placement="top" name="btnCancel"
+                  (click)="closeMaterialType()">Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="col-md-12">
+  <div id="title-incident">
+    <h2> Incident List</h2>
+    <button (click)="home()" class="btn btn-primary">Back Home</button>
+    <button (click)="createIncident()" class="btn btn-success">Create Incident</button>
+  </div>
+  <table class="table table-striped responsive-md">
+    <thead>
+    <tr>
+      <th>Full Name</th>
+      <th>Accident Type</th>
+      <th>Agent Name</th>
+      <th>Site</th>
+      <th>Lesion Type</th>
+      <!--<th>Description</th>-->
+      <th>Accident Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let incident of incidents$ | async">
+      <td>{{incident.employee.firstName}} {{incident.employee.lastName}}</td>
+      <td>{{incident.incidentType.description}}</td>
+      <td>{{incident.lesionType.type}}</td>
+      <td>{{incident.accidentSite}}</td>
+      <td>{{incident.affectedPart}}</td>
+      <!--<td>{{incident.workingTurn}}</td>-->
+      <td>{{incident.accidentDate | date }}</td>
+      <td>
+        <!--<button class="btn btn-danger" (click)="deleteIncident(incident)"> Delete</button>-->
+        <!--<button class="btn btn-info" (click)="updateIncident(incident)" style="margin-left: 20px;"> Edit</button>-->
+        <!--<button class="btn btn-danger" > Delete</button>
+        <button class="btn btn-info" style="margin-left: 20px;"> Edit</button>-->
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

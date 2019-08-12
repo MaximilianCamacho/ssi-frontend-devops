@@ -1,0 +1,39 @@
+<!--<p>
+  material-type-list works!
+</p>-->
+<div class="col-md-6" id="content-material-type">
+  <div id="material-type-list">
+    <div style="padding: 5px 0px 5px 0px;">
+      <h2> Material Type List</h2>
+      <button (click)="home()" class="btn btn-primary">Back Home</button>
+      <button (click)="createMaterialType()" class="btn btn-success" name="btnAddMaterialType">Add Material Type</button>
+    </div>
+    <table class="table table-striped table-bordered" border="0">
+      <thead>
+      <tr>
+        <th class="hidden">Id</th>
+        <th>#Nro</th>
+        <th>Material Type Name</th>
+        <th><div align="center">Action</div></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let materialType of materialTypes$ | async; let index=index">
+        <td class="hidden">{{materialType.id}}</td>
+        <td align="center">{{index + 1}}</td>
+        <td>{{materialType.nameType}}</td>
+        <td align="center">
+          <!--<img src="../../assets/images/edit.png" height="20" width="20" class="editIcon"   (click)="editar(areasItem)">-->
+          <button class="btn btn-info_nn" (click)="updateMaterialType(materialType)" id="btnEditMT_1"  name="btnEditMT_{{materialType.id}}"><img src="../../assets/images/edit.png" height="20" width="20" class="editIcon"></button>
+          <button class="btn btn-danger_nn" (click)="deleteMaterialType(materialType.id)" style="margin-left: 20px;" name="btnDeleteMT_{{materialType.id}}"> <img src="../../assets/images/delete.png" height="20" width="20" class="editIcon" /></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="image-material-type">
+    <div id="content-image-material-type">
+       <img src="/assets/images/mat-seguridad.jpg" alt="Logo" width="300" height="300" img= "img-responsive">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+.background-primary {
+    background-color: background-dark!important;
+  }
+  .background-accent {
+    background-color: accent-color!important;
+  }
+  .text-floral-white {
+    color: floralwhite!important;
+  }
+
+  .flex-spacer {
+  flex: 1 1 auto;
+  }
+  /*======================ADD========================*/
+  .container{
+    width: 97.5%;
+
+  }

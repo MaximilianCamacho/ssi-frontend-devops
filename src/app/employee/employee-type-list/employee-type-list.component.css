@@ -1,0 +1,17 @@
+.col-md-6{
+  width: 98%;
+  float: left;
+  padding: 0px 10px 0px 20px;
+}
+.content-employe-type{
+  width: 70%;
+  float: left;
+}
+#image-employee-type{
+  width: 30%;
+  float: left;
+  padding: 10px 10px 10px 25px;
+}
+#title-content{
+  padding: 60px 5px 0px 20px;
+}

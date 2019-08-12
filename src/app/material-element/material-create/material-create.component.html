@@ -1,0 +1,55 @@
+<div class="container col-md-10">
+        <div class="row">
+        <div class="container col-md-7">
+          <br><br><br><br><br><br><br><br><br><br>Que es esto<br>
+                <form class="col-md-10"#MateForm="ngForm">
+                        <div class="row">
+                        <div class="form-group" class="col-sm-4">
+                            <label class="control-label col-sm-2" for="name" style="padding-top: 50px;">Name Material:</label>
+                            <input [(ngModel)]="material.name"
+                                   name="name"
+                                   #name ="ngModel"
+                                   type="text"
+                                   required
+                                   placeholder="name of material"/>
+                        </div></div>
+                        <div class="row">
+                        <div class="form-group" class="col-sm-4">
+                            <label class="control-label col-sm-2" for="matDescription">Description:</label>
+                            <input [(ngModel)]="material.matDescription"
+                                   name="matDescription"
+                                   #matDescription="ngModel"
+                                   type="text"
+                                   placeholder="Description of material" />
+                        </div></div>
+                        <div class="row">
+                        <div class="form-group" class="col-sm-4">
+                            <label class="control-label col-sm-2" for="vidaUtil">Productive Life:</label>
+                            <input [(ngModel)]="material.vidaUtil"
+                                   #vidaUtil="ngModel"
+                                   name="vidaUtil"
+                                   type="text"
+                                   placeholder="vidaUtil"/>
+                        </div></div>
+                        <div class="row">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="materialType">Select Equipment type:</label><br><br>
+                            <select [(ngModel)]="material.materialTypeId" #materialTypeId="ngModel" name="materialType" placeholder="Equipment type">
+                                <option *ngFor="let materialType of materialTypes" [value]="materialType.id">{{materialType.nameType}}</option>
+                            </select>
+                        </div>
+                        </div>
+                        <input class="btn btn-primary" type="button" (click)="onSubmit()" value="Save"/>
+                        </form>
+        </div>
+        <!--<div class="col-md-3 pull-right">
+             <img src="/assets/images/mat-seguridad.jpg" alt="icon" width="300" height="300">
+             <img src="/assets/images/mat-seguridad.jpg" alt="icon" width="300" height="300">
+        </div>-->
+          <div class="col-md-3 pull-right">
+            <img src="/assets/images/mat-seguridad.jpg" alt="icon" width="300" height="300">
+          </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,36 @@
+<div class="container jumbotron"
+fxLayout="row"
+fxLayout.sm="column"
+fxLayout.xs="column"
+fxLayoutAlign.xs="start center"
+fxLayoutAlign.sm="start center"
+fxLayoutAlign.gt-sm="center center"
+fxLayoutGap="10px">
+<div fxFlex fxFlex.gt-sm="70%">
+    <h3>SSI-GA Form Equipment delete</h3>
+    <form [formGroup]="editMaterial">
+        <mat-form-field>
+            <mat-select formControlName="EquipmentToAssign" placeholder="select material">
+                <mat-option>casco</mat-option>
+                <mat-option>guantes</mat-option>
+            </mat-select>
+                   <mat-hint><span>the material to be deleted</span></mat-hint>
+        </mat-form-field>
+        <mat-input-container floatPlaceholder="auto">
+                <input matInput formControlName="quantity"
+                       type="text"
+                       placeholder="Quantity">
+                       <mat-hint>
+                          <span>select the quantity</span>
+                      </mat-hint>
+            </mat-input-container>
+        </form> 
+        
+    <button mat-button (click)="onClick" type="button" class="btn btn-warning">Delete</button>
+
+</div>
+<div fxFlex fxFlex.gt-sm="20%">
+<img src="/assets/images/mat-seguridad.jpg" alt="icon" width="300" height="300">
+</div>
+<div fxFlex></div>
+</div>

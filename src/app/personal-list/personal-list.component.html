@@ -1,0 +1,102 @@
+<div class="container">
+
+  <div class="container jumbotron"
+       fxLayout="row"
+       fxLayout.sm="column"
+       fxLayout.xs="column"
+       fxLayoutAlign.xs="start center"
+       fxLayoutAlign.sm="start center"
+       fxLayoutAlign.gt-sm="center center"
+       fxLayoutGap="10px">
+    <div fxFlex fxFlex.gt-sm="70%">
+
+      <br>
+
+
+        <a routerLink="/area-list"  class="btn btn-info" >Register Area</a>
+        <a routerLink="/area-list"  class="btn btn-primary">Register Capacity</a>
+        <a routerLink="/area-list"  class="btn btn-success">Register Personal</a>
+
+      <br><br><br>
+      <p>List the Personal with Assigemt Area ,Capcity:</p>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Photografy</th>
+          <th>Name</th>
+          <th>Capacity</th>
+          <th>Area</th>
+          <th>Obeservations</th>
+          <th>Fecha Register</th>
+          <th>Options</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr >
+          <td><img src="../../assets/images/avatar.png" height="20" width="20"/></td>
+          <td>Juan Perez</td>
+          <td>Albanil</td>
+          <td>001</td>
+          <td>Tiene 2 anios de Experiencia</td>
+          <td>2018-06-12</td>
+          <td>
+            <img src="../../assets/images/edit.png" height="20" width="20" class="editIcon"   />
+            <img src="../../assets/images/delete.png" height="20" width="20" class="editIcon"  />
+          </td>
+        </tr>
+
+        <tr >
+          <td><img src="../../assets/images/avatar.png" height="20" width="20"/></td>
+          <td>Jaime Blas</td>
+          <td>Albanil</td>
+          <td>001</td>
+          <td>Tiene 2 anios de Experiencia</td>
+          <td>2018-06-12</td>
+          <td>
+            <img src="../../assets/images/edit.png" height="20" width="20" class="editIcon"   />
+            <img src="../../assets/images/delete.png" height="20" width="20" class="editIcon"  />
+          </td>
+        </tr>
+
+        <tr >
+          <td><img src="../../assets/images/avatar.png" height="20" width="20"/></td>
+          <td>Oamr huanca</td>
+          <td>Albanil</td>
+          <td>001</td>
+          <td>Tiene 2 anios de Experiencia</td>
+          <td>2018-06-12</td>
+          <td>
+            <img src="../../assets/images/edit.png" height="20" width="20" class="editIcon"   />
+            <img src="../../assets/images/delete.png" height="20" width="20" class="editIcon"  />
+          </td>
+        </tr>
+
+
+
+
+        <!--<tr *ngFor="let areasItem of areas">-->
+          <!--<td>{{areasItem.name}}</td>-->
+          <!--<td>{{areasItem.description}}</td>-->
+          <!--<td>{{areasItem.codigo}}</td>-->
+          <!--<td>-->
+            <!--<img src="../../assets/images/edit.png" height="20" width="20" class="editIcon"   (click)="editar(areasItem)">-->
+            <!--<img src="../../assets/images/delete.png" height="20" width="20" class="editIcon"  (click)="delete(areasItem)"/>-->
+          <!--</td>-->
+        <!--</tr>-->
+
+        </tbody>
+      </table>
+
+
+    </div>
+    <div fxFlex fxFlex.gt-sm="20%">
+      <img src="/assets/images/areaTrabajo.jpg" alt="icon" width="300" height="300">
+    </div>
+    <div fxFlex></div>
+  </div>
+  <br>
+
+
+</div>

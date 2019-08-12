@@ -1,0 +1,14 @@
+<h3 *ngIf="isLoading"><i>Loading incident types ... </i></h3>
+<h3 *ngIf="!isLoading">Select a incident type:</h3>
+
+<nav>
+  <button (click)="getIncidentTypes()" class="btn btn-primary">Refresh</button>
+  <a *ngFor="let incidentType of incidentTypes$ | async" (click)="select(incidentType)">{{incidentType.name}}</a>
+</nav>
+
+<div *ngIf="selectedIncidentType">
+  <hr>
+  <h2>Incident Type Detail</h2>
+  <h3>Editing: {{selectedIncidentType.name}}</h3>
+  <app-incident-type-detail [incidentType]="selectedIncidentType"></app-incident-type-detail>
+</div>

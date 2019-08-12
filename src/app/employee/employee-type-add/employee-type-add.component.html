@@ -1,0 +1,51 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h3 class="modal-title pull-left">
+      <span class="text-warning icon-interface-1"></span>
+      <span>Add Employee Type</span>
+    </h3>
+    <button type="button" class="close close_modal" aria-label="Close" (click)="closeEmployeeType()">
+      <img src="/assets/images/close.jpg">
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="form-horizontal" #myForm="ngForm" novalidate>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="typeName">Employee Type:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" [(ngModel)] ="employeeType.typeName" #textEmployeeType="ngModel" id="typeName" placeholder="Enter Material" name="typeName"
+                  minlength="3" maxlength="20" pattern="[A-Z ][ a-zA-Z0-9.-_,\u00f1\u00d1]*" required />
+          <div *ngIf="textEmployeeType.touched && !textEmployeeType.valid">
+            <div *ngIf="textEmployeeType.errors.required" id="message_error">Incident type es requerido</div>
+            <div *ngIf="textEmployeeType.errors.minlength" id="message_error">El formato es al menos {{textEmployeeType.errors.minlength.requiredLength}} caracterers. </div>
+            <div *ngIf="textEmployeeType.errors.pattern" id="message_error">Debe empezar en mayúscula. </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="description">Description:</label>
+        <div class="col-sm-9">
+          <!--<input type="text" class="form-control" [(ngModel)] =" employeeType.description" id="description" placeholder="Enter Type Material" name="description">-->
+          <textarea type="text" rows="4" class="form-control" id="description" placeholder="Enter incident type"
+                    name="description" [(ngModel)]="employeeType.description" #textDescription="ngModel" minlength="3" maxlength="100" pattern="[A-Z ][ a-zA-Z0-9.-_,/\u00f1\u00d1]*">
+          </textarea>
+          <div *ngIf="textDescription.touched && !textDescription.valid">
+            <!--<div *ngIf="textDescription.errors.required" id="message_error">Material es requerido</div>-->
+            <div *ngIf="textDescription.errors.minlength" id="message_error">El formato es al menos {{textDescription.errors.minlength.requiredLength}} caracterers. </div>
+            <div *ngIf="textDescription.errors.pattern" id="message_error">Debe empezar en mayúscula. </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" (click)="onSubmit()" class="btn btn-primary" name="btnCreate" [disabled]="!myForm.valid">Create</button>
+          <button type="button" class="btn btn-danger " data-toggle="tooltip" data-placement="top" name="btnCancel"
+                  (click)="closeEmployeeType()">Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

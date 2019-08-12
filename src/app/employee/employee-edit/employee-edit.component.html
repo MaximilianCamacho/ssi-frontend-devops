@@ -1,0 +1,164 @@
+
+<div class="modal-content">
+  <div class="modal-header">
+    <h3 class="modal-title pull-left">
+      <span class="text-warning icon-interface-1"></span>
+      <span>UpDate Employee</span>
+    </h3>
+    <button type="button" class="close close_modal" aria-label="Close" (click)="closeEmployee()">
+      <img src="/assets/images/close.jpg">
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="form-horizontal" #myForm="ngForm" name="myForm" novalidate>
+      <div  *ngIf="!isValid" class="alert alert-danger">
+        <strong>Error!</strong> Falta Lllenar algunoscambio
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2">First Name:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" [(ngModel)]="employee.firstName" #firstName="ngModel" name="firstName" placeholder="Enter First Name"
+          minlength="3" maxlength="20" pattern="[A-Z ][ a-zA-Z]*" required />
+          <div *ngIf="firstName.touched && !firstName.valid">
+            <div *ngIf="firstName.errors.required" id="message_error">First Name es requerido</div>
+            <div *ngIf="firstName.errors.minlength" id="message_error">El formato es al menos {{firstName.errors.minlength.requiredLength}} caracterers. </div>
+            <div *ngIf="firstName.errors.pattern" id="message_error">El nombre debe empezar en mayúscula. </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2">Last Name:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" [(ngModel)]="employee.lastName" #lastName="ngModel" name="lastName" placeholder="Enter Last Name"
+                minlength="3" maxlength="30" pattern="[A-Z ][ a-zA-Z]*" required/>
+          <div *ngIf="lastName.touched && !lastName.valid">
+            <div *ngIf="lastName.errors.required" id="message_error">Last Name es requerido</div>
+            <div *ngIf="lastName.errors.minlength" id="message_error">El formato es al menos {{lastName.errors.minlength.requiredLength}} caracterers. </div>
+            <div *ngIf="lastName.errors.pattern" id="message_error">El Apellido debe empezar en mayúscula. </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2">CI:</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" [(ngModel)]="employee.ci" #ci="ngModel" name="ci" placeholder="Enter CI"
+                 minlength="5" maxlength="7" pattern="[0-9]*" required>
+          <div *ngIf="ci.touched && !ci.valid">
+            <div *ngIf="ci.errors.required" id="message_error">CI del empleado es requerido</div>
+            <div *ngIf="ci.errors.minlength" id="message_error">El formato es al menos {{ci.errors.minlength.requiredLength}} digitos. </div>
+            <div *ngIf="ci.errors.pattern" id="message_error">Ci debe ser numeros entros positivos. </div>
+          </div>
+        </div>
+        <label class="control-label col-sm-1" >Gender:</label>
+        <div class="col-sm-4">
+          <select class="form-control" [(ngModel)]="employee.gender" #gender="ngModel" name="gender" required>
+            <option *ngFor="let gender of genders">{{gender.valueOf()}}</option>
+          </select>
+          <div *ngIf="gender.touched && !gender.valid">
+            <div *ngIf="gender.errors.required" id="message_error">Gender (Sexo) es requerido</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2">Address:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" [(ngModel)]="employee.address" #address="ngModel" name="address" placeholder="Enter address"
+                 minlength="5" maxlength="50" required pattern="[A-Z ][ a-zA-Z0-9.-_\/]*"/>
+          <div *ngIf="address.touched && !address.valid">
+            <div *ngIf="address.errors.required" id="message_error">La dirección es requerido</div>
+            <div *ngIf="address.errors.minlength" id="message_error">El formato es al menos {{address.errors.minlength.requiredLength}} caracteres. </div>
+            <div *ngIf="address.errors.pattern" id="message_error">La direccion debe empezar con mayuscula. </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2">date of birth:</label>
+        <div class="col-sm-4">
+          <input type="date" class="form-control" [(ngModel)]="employee.birthDate" #birthdate="ngModel" placeholder="date of birth" name="birthDate" required id="{{employee.birthDate | date: 'dd/MM/yyy'}}">
+          <label disabled="disabled" style="color: grey; padding: 0px 0px 0px 20px;">{{employee.birthDate | date:'dd/MM/yyyy'}}</label>
+          <div *ngIf="birthdate.touched && !birthdate.valid">
+            <div *ngIf="birthdate.errors.required" id="message_error">Fecha de nacimiento es requerido</div>
+          </div><!--<label>{{employee.birthDate | date:'dd/MM/yyyy HH:mm:ss'}}</label>-->
+        </div>
+        <label class="control-label col-sm-1">Phone:</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" [(ngModel)]="employee.phone" #phone="ngModel" placeholder="Enter Phone" name="phone"
+                 minlength="7" maxlength="8" pattern="[0-9]+" required />
+          <div *ngIf="phone.touched && !phone.valid">
+            <div *ngIf="phone.errors.required" id="message_error">La telefono es requerido</div>
+            <div *ngIf="phone.errors.minlength" id="message_error">El formato es al menos {{phone.errors.minlength.requiredLength}} digitos. </div>
+            <div *ngIf="phone.errors.pattern" id="message_error">Telefono debe ser numero enteros positivos. </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2">Email:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" [(ngModel)]="employee.email" #email="ngModel" placeholder="Enter email" name="email"
+                 minlength="5" maxlength="50" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"/>
+          <div *ngIf="email.touched && !email.valid">
+            <!--<div *ngIf="phone.errors.required" id="message_error">La telefono es requerido</div>-->
+            <div *ngIf="email.errors.minlength" id="message_error">Emal debe ser al menos de {{email.errors.minlength.requiredLength}} caracteres. Con el siguiente formato: www.example@gmail.com </div>
+            <div  *ngIf="email.errors && email.errors.pattern" id="message_error">Email is invalid</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2">Employee Type:</label>
+        <div class="col-sm-4">
+          <select class="form-control" [(ngModel)]="employee.employeeTypeId" #employeet="ngModel" name="employeeTypeId" required>
+            <option *ngFor="let employeeType of employeeTypes$" [value]="employeeType.typeId">{{employeeType.typeName}}</option>
+          </select>
+          <div *ngIf="employeet.touched && !employeet.valid">
+            <div *ngIf="employeet.errors.required" id="message_error">Employee type es requerido</div>
+          </div>
+          <!--<label>{{employeType.typeId}}</label>-->
+        </div>
+        <label class="control-label col-sm-1">Salary:</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" [(ngModel)]="employee.salary" #salary="ngModel" placeholder="Enter Salary" name="salary"
+                 pattern="[0-9]+" required/>
+          <div *ngIf="salary.touched && !salary.valid">
+            <div *ngIf="salary.errors.required" id="message_error">La telefono es requerido</div>
+            <div *ngIf="salary.errors.pattern" id="message_error">Salario debe ser numero enteros positivos (Example: 2060, 2500, 3000...) </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" (click)="updateEmployee()" class="btn btn-primary" [disabled]="!myForm.valid">Update
+          </button>
+          <button type="button" class="btn btn-danger " data-toggle="tooltip" data-placement="top"
+                  (click)="closeEmployee()">Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!--
+<div class="col-md-6">
+  <h2 class="text-center">Edit Employee</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input formControlName="firstName" placeholder="First Name" name="firstName" class="form-control" id="firstName">
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input formControlName="lastName" placeholder="Last name" name="lastName" class="form-control" id="lastName">
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <input type="text" formControlName="address" placeholder="Address" name="address" class="form-control" id="address">
+    </div>
+
+    <button class="btn btn-success">Update</button>
+  </form>
+</div>
+-->

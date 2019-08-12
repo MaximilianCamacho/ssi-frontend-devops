@@ -1,0 +1,14 @@
+.special {
+  font-weight: bold !important;
+  color: #fff !important;
+  background: #bc0000 !important;
+  text-transform: uppercase;
+}
+
+
+.special2 {
+  font-weight: bold !important;
+  color: #fff !important;
+  background: #5cb85c !important;
+  text-transform: uppercase;
+}
